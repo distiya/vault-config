@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: vault-config-server
+  cloud:
+    config:
+      server:
+        vault:
+          kv-version: 2
+          token: ${VAULT_TOKEN:myroot}
+  profiles:
+    active: vault
