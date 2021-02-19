@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  vaultConfig:
+    build: ./vault-config
+    image: topcoder/vault-config:latest
+    container_name: vault-config-server
+    environment:
+      VAULT_TOKEN: "${VAULT_TOKEN}"
+      VAULT_HOST: vault
+    depends_on:
+      - vault
+  vault:
+    image: "vault"
+    container_name: vault-server
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "${VAULT_TOKEN}"
+      VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8200"
+    ports:
+      - "8200:8200"
+  vaultUpdate:
+    build: ./vault-update
+    image: topcoder/vault-update:latest
+    container_name: vault-update-app
+    environment:
+      CONFIG_SERVER_URI: "http://vaultConfig"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - vaultConfig

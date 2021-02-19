@@ -7,6 +7,8 @@ spring:
     config:
       server:
         vault:
+          host: ${VAULT_HOST:127.0.0.1}
+          port: ${VAULT_PORT:8200}
           kv-version: 2
           token: ${VAULT_TOKEN:myroot}
   profiles:
