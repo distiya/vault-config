@@ -24,7 +24,7 @@ services:
     image: topcoder/vault-update:latest
     container_name: vault-update-app
     environment:
-      CONFIG_SERVER_URI: "http://vaultConfig"
+      CONFIG_SERVER_URI: "http://vaultConfig:8080"
     ports:
       - "8080:8080"
     depends_on:
