@@ -1,3 +1,4 @@
+#This property file will be taken into consideration when building application. This will help to ensure build is success
 server:
   port: 8888
 spring:
@@ -7,4 +8,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/spring-cloud-samples/config-repo
+          uri: https://github.com/spring-cloud-samples/config-repo # Public git repo to pass build
